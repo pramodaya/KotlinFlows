@@ -7,12 +7,12 @@ import kotlinx.coroutines.flow.flow
 class MainViewModel: ViewModel() {
 
     val countDownFlow = flow<Int> {
-        val startingValue = 20
-        var currentValue = startingValue
-        while (currentValue > 0){
+        var number = 20
+        emit(number)
+        while (number > 0){
             delay(1000L)
-            currentValue--
-            emit(currentValue)
+            number--
+            emit(number)
         }
     }
 }
