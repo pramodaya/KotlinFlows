@@ -15,4 +15,6 @@ class MainViewModel: ViewModel() {
             emit(number)
         }
     }
+
+    
 }
