@@ -15,8 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.pramodaya.kotlinflows.ui.theme.KotlinFlowsTheme
+import kotlinx.coroutines.flow.collect
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,15 +27,15 @@ class MainActivity : ComponentActivity() {
             KotlinFlowsTheme {
 
                 val viewModel = viewModel<MainViewModel>()
-                val number = viewModel.countDownFlow.collectAsState(initial = 10)
-
+                val randomNumber = viewModel.getRandomNumberFlow.collectAsState(initial = 0)
                 Box(modifier = Modifier.fillMaxSize()){
                     Text(
-                        text = number.value.toString(),
+                        text = randomNumber.value.toString(),
                         fontSize = 30.sp,
                         modifier = Modifier.align(Alignment.Center)
                     )
                 }
+
             }
         }
     }
